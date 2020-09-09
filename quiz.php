@@ -78,7 +78,7 @@ if (a in array )
 */
 if($('#avec input:radio:checked').val()=="salut")
 {
-  alert("ok");
+  alert("bonne réponse");
   bp=parseInt(document.getElementById("compteur1").getAttribute("bp")+1);
   document.getElementById("compteur1").setAttribute("bp",bp);
 }
