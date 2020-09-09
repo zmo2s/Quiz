@@ -33,11 +33,22 @@ $manager = new QuestionManager($db);
 <a class="btn btn-primary" href="#" role="button" id="ques">Question n°1</a>
 
 
-<a class="btn btn-primary" href="#" role="button" id="ques1">Quelle est .. ?</a>
+<?php 
+$arrayReponse=$manager->listReponse(1);
+//$arrayReponse->getPhrase(); 
+
+foreach($arrayReponse as $question)
+{
+
+?>
+
+<a class="btn btn-primary mt-3" href="#" role="button" id="ques1"><?= $question->getPhrase() ?></a>
 
   <?php 
-  
+}
   $array=$manager->listQuestion(1);
+  
+
 
 ?><div id="compteur" data="1"><div id="marche"></div> <div id="champ"> <form id="rad"> <?php 
   foreach($array as $question)
@@ -83,9 +94,17 @@ if($('#avec input:radio:checked').val()=="salut")
   document.getElementById("compteur1").setAttribute("bp",bp);
 }
 
+//$manager->listReponseTotal();
 
+/*
+if($('#avec input:radio:checked').val()=="salut")
+{
+  alert("bonne réponse");
+  bp=parseInt(document.getElementById("compteur1").getAttribute("bp")+1);
+  document.getElementById("compteur1").setAttribute("bp",bp);
+}
 
-
+*/
 
 
 

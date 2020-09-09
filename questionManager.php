@@ -55,7 +55,32 @@ return $emp;
 
 return $emp;
     }
+
+
+
+    public function listReponseTotal()
+    {
+            $emp=[];
+
+    
+
+        $q=$this->db->query('SELECT * FROM reponse');
+
+
+
+            while ($donnes =$q->fetch(PDO::FETCH_ASSOC))
+             {
+                 $emp[]=new Question($donnes['numero'],$donnes['phrase']);
+             }
+
+return $emp;
+    }
+    
 }
+
+
+
+
 
 
 /*
