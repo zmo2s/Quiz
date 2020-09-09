@@ -11,7 +11,8 @@ $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 //echo $donne['phrase'];
 $db = new PDO('mysql:host=127.0.0.1;dbname=quiz', 'phpmyadmin', 'Password1011%');
 
-$manager = new QuestionManager($db);
+$manager = new QuestionManager($bdd);
+$manager1 = new QuestionManager($db);
 
 ?>
 
@@ -48,7 +49,7 @@ foreach($arrayReponse as $question)
 }
   $array=$manager->listQuestion(1);
   
-
+  $manager->rep();
 
 ?><div id="compteur" data="1"><div id="marche"></div> <div id="champ"> <form id="rad"> <?php 
   foreach($array as $question)
@@ -93,8 +94,9 @@ if($('#avec input:radio:checked').val()=="salut")
   bp=parseInt(document.getElementById("compteur1").getAttribute("bp")+1);
   document.getElementById("compteur1").setAttribute("bp",bp);
 }
+//$manager = null;
+//$manager1 = new QuestionManager($bdd);
 
-//$manager->listReponseTotal();
 
 /*
 if($('#avec input:radio:checked').val()=="salut")

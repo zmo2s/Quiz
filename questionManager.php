@@ -58,9 +58,9 @@ return $emp;
 
 
 
-    public function listReponseTotal()
+    public function rep()
     {
-            $emp=[];
+        $emp=[];
 
     
 
@@ -74,22 +74,12 @@ return $emp;
              }
 
 return $emp;
-    }
     
+}
+
+
 }
 
 
 
 
-
-
-/*
-var_dump($manager);
-$perso = new Question(1,"ouep");
-$manager->addQuestion($perso);
-var_dump($manager);
-$manager->listQuestion();
-echo "<pre>";
-var_dump($manager->listQuestion());
-echo "<pre>";
-*/
