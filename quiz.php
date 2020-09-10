@@ -33,7 +33,7 @@ $manager = new QuestionManager($bdd);
 
 
 <?php 
-$arrayReponse=$manager->listReponse(1);
+$arrayReponse=$manager->listQuestion(1);
 
 
 
@@ -47,7 +47,7 @@ foreach($arrayReponse as $question)
 
   <?php 
 }
-  $array=$manager->listQuestion(1);
+  $array=$manager->listPhrase(1);
   
  
 

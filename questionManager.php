@@ -20,7 +20,7 @@ class QuestionManager
         $q->execute();
     }
 
-    public function listQuestion($nb)
+    public function listPhrase($nb)
     {
             $emp=[];
 
@@ -38,7 +38,7 @@ class QuestionManager
 return $emp;
     }
 
-    public function listReponse($nb)
+    public function listQuestion($nb)
     {
             $emp=[];
 
@@ -58,7 +58,7 @@ return $emp;
 
 
 
-    public function rep()
+    public function listeReponse()
     {
         $emp=[];
 
