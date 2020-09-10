@@ -36,7 +36,30 @@ $manager1 = new QuestionManager($db);
 
 <?php 
 $arrayReponse=$manager->listReponse(1);
-//$arrayReponse->getPhrase(); 
+
+/*
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+//   document.getElementById("demo").innerHTML = this.responseText;
+let myObj = JSON.parse(this.responseText);
+
+
+// if b!=4 a la fin on s'arrete
+elementAjoute78.innerHTML=myObj[0].phrase;
+
+//console.log(myObj.phrase);
+console.log(myObj[0].phrase);
+  }
+};
+a=document.getElementById("compteur").getAttribute("data");
+xhttp.open("GET", "reponse.php?nb="+a, true);
+xhttp.send();
+
+*/
+
+
+
 
 foreach($arrayReponse as $question)
 {
@@ -89,7 +112,7 @@ function loadDoc() {
   bp=parseInt(document.getElementById("compteur1").getAttribute("bp")+1);
   document.getElementById("compteur1").setAttribute("bp",bp);
 }
-     }     console.log(myObj);
+     }   //  console.log(myObj);
     }
   };
   xhttp.open("GET", "rep.php", true);
@@ -175,8 +198,32 @@ if($('#avec input:radio:checked').val()=="salut")
   elementAjoute78.setAttribute("role","button");
   
  
-  elementAjoute78.innerHTML="Quelle est .. ?";
+
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+  //   document.getElementById("demo").innerHTML = this.responseText;
+  let myObj = JSON.parse(this.responseText);
+  
+
+  // if b!=4 a la fin on s'arrete
+  elementAjoute78.innerHTML=myObj[0].phrase;
+
+  //console.log(myObj.phrase);
+  console.log(myObj[0].phrase);
+    }
+  };
+  a=document.getElementById("compteur").getAttribute("data");
+  xhttp.open("GET", "reponse.php?nb="+a, true);
+  xhttp.send();
+
+
   document.getElementById("avec").appendChild(elementAjoute78);
+
+
+ // elementAjoute78.innerHTML="Quelle est .. ?";
+  //document.getElementById("avec").appendChild(elementAjoute78);
 /* --*/
 
 max=0;
