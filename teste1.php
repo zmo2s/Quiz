@@ -2,7 +2,7 @@
 require 'library/mysql.php';
 
 
-$rep104 = $bdd->query('SELECT MAX(numero) FROM questions');
+$rep104 = $bdd->query('SELECT MAX(numero) FROM sentance');
   $rep104 = $rep104->fetch();
 
 

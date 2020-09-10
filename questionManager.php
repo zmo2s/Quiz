@@ -12,7 +12,7 @@ class QuestionManager
     public function addQuestion(Question $emp)
     {
        
-        $q=$this->db->prepare('INSERT INTO questions(numero,phrase) VALUES(:numero,:phrase)');
+        $q=$this->db->prepare('INSERT INTO sentance(numero,phrase) VALUES(:numero,:phrase)');
         $q->bindValue(':numero',$emp->getNumero());
         $q->bindValue(':phrase',$emp->getPhrase());
    
@@ -26,7 +26,7 @@ class QuestionManager
 
     
 
-        $q=$this->db->query('SELECT * FROM questions where numero='.$nb);
+        $q=$this->db->query('SELECT * FROM sentance where numero='.$nb);
 
 
 
@@ -44,7 +44,7 @@ return $emp;
 
     
 
-        $q=$this->db->query('SELECT * FROM reponse where numero='.$nb);
+        $q=$this->db->query('SELECT * FROM questions where numero='.$nb);
 
 
 
@@ -64,7 +64,7 @@ return $emp;
 
     
 
-        $q=$this->db->query('SELECT * FROM rep');
+        $q=$this->db->query('SELECT * FROM answer');
 
 
 
