@@ -77,9 +77,29 @@ return $emp;
     
 }
 
+public function taille()
+{
+
+    // renvoie un int 
+
+
+    $emp=[];
+
+
+
+    $q=$this->db->query('SELECT max(numero) FROM questions');
+
+    $donnees = $q->fetchAll();
+
+
+return $donnees[0][0];
+
+
 
 }
 
 
 
 
+
+}

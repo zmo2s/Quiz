@@ -12,6 +12,8 @@ $db = new PDO('mysql:host=127.0.0.1;dbname=quiz', 'phpmyadmin', 'Password1011%')
 $manager = new QuestionManager($bdd);
 
 
+
+
 ?>
 
 <nav class="navbar navbar-light bg-primary">
@@ -63,7 +65,7 @@ $manager = new QuestionManager($bdd);
     if (this.readyState == 4 && this.status == 200) {
       let myObj = JSON.parse(this.responseText);
       document.getElementById("ques1").innerHTML=myObj[0].phrase;
-      console.log(myObj[0].phrase);
+  //    console.log(myObj[0].phrase);
     }
   };
   xhttp.open("GET", "fonction/questionList.php?nb=0", true);
@@ -102,7 +104,7 @@ var xhttp = new XMLHttpRequest();
     if (this.readyState == 4 && this.status == 200) {
       let myObj = JSON.parse(this.responseText);
       document.getElementById("ques1").innerHTML=myObj[0].phrase;
-      console.log(myObj[0].phrase);
+     // console.log(myObj[0].phrase);
   
   for(l=0;l < myObj.length;l++)
   {
@@ -273,7 +275,7 @@ if(b<=3)
   elementAjoute78.innerHTML=myObj[0].phrase;
 
 
-  console.log(myObj[0].phrase);
+  //console.log(myObj[0].phrase);
     }
   };
   a=document.getElementById("compteur").getAttribute("data");
@@ -362,17 +364,33 @@ if($rep104==b)
 loadDoc1();
 // incrémente a
 
+var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+
+
+      taille = this.responseText;
+  //   document.getElementById("demo").innerHTML = this.responseText;
+  
+console.log(taille);
+
+
 
 if(b ==5)
 {
-  alert("test reussie félicitations votre score est de "+document.getElementById("compteur1").getAttribute("bp")+" points");
+ 
+  alert("test reussie félicitations votre score est de "+document.getElementById("compteur1").getAttribute("bp")+"/"+taille+" points");
   $('#suiv').remove();
         $('#ques').remove();
         $('#ques1').remove();
         $('#marche').remove();
 }
 
-
+}
+  };
+  xhttp.open("GET", "teste1.php", true);
+  xhttp.send();
+  
 }
 
 

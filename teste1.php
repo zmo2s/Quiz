@@ -1,12 +1,19 @@
 <?php
-require 'library/mysql.php';
 
 
-$rep104 = $bdd->query('SELECT MAX(numero) FROM sentance');
-  $rep104 = $rep104->fetch();
+
+require 'questionManager.php';
+$db = new PDO('mysql:host=127.0.0.1;dbname=quiz', 'phpmyadmin', 'Password1011%');
+
+$manager = new QuestionManager($db);
+
+$array=$manager->taille();
 
 
-$a= $rep104[0][0];
 
-echo $a;
 
+
+  //print_r($rows);
+
+//echo $rep104['nom'];
+echo $array;
