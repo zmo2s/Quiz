@@ -37,116 +37,58 @@ $manager = new QuestionManager($bdd);
 
 
 /* question n 1*/
-//$arrayReponse=$manager->listQuestion(1);
+$arrayReponse=$manager->listQuestion(1);
 
 
 
 
-//foreach($arrayReponse as $question)
-//{
+foreach($arrayReponse as $question)
+{
 
 ?>
 
-<a class="btn btn-primary mt-3" href="#" role="button" id="ques1">test</a>
+<a class="btn btn-primary mt-3" href="#" role="button" id="ques1"><?= $question->getPhrase() ?></a>
 
   <?php 
-//}
+}
 
 
 
-?>
 
- <script>
+
+/* 
 
  var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      let myObj = JSON.parse(this.responseText);
-      document.getElementById("ques1").innerHTML=myObj[0].phrase;
-      console.log(myObj[0].phrase);
+     document.getElementById("demo").innerHTML = this.responseText;
     }
   };
-  xhttp.open("GET", "fonction/questionList.php?nb=0", true);
+  xhttp.open("GET", "ajax_info.txt", true);
   xhttp.send();
 
-
+*/
 
 /* fin question n 1 */
-</script>
-<?php
 
- // $array=$manager->listPhrase(1);
+
+  $array=$manager->listPhrase(1);
   
  
 
 ?><div id="compteur" data="1"><div id="marche"></div> <div id="champ"> <form id="rad"> <?php 
-  //foreach($array as $question)
-  //{
-    ?>
-<!--    <div class="form-check mt-5">
-  
-  <input class="form-check-input mt-3" type="radio" name="exampleRadios" id="exampleRadios1" value="">
-  <label class="form-check-label" for="exampleRadios1">
-  <a class="btn btn-primary" id="type1" href="#" role="button"></a>
-  </label>
-
-
-  -->
-
-
-
-<script>
-
-var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      let myObj = JSON.parse(this.responseText);
-      document.getElementById("ques1").innerHTML=myObj[0].phrase;
-      console.log(myObj[0].phrase);
-  
-  for(l=0;l < myObj.length;l++)
+  foreach($array as $question)
   {
-
-
+    ?>
+    <div class="form-check mt-5">
   
-
-var elementAjoute = document.createElement("div");
-  elementAjoute.setAttribute("class","form-check mt-5");
-  elementAjoute.setAttribute("id","testew"+l);
-
-  document.getElementById("rad").appendChild(elementAjoute);
-
-
-
- 
-  var elementAjouteInput = document.createElement("input");
-  elementAjouteInput.setAttribute("class","form-check-input mt-3");
-  elementAjouteInput.setAttribute("type","radio");
-  elementAjouteInput.setAttribute("name","exampleRadios");
-  elementAjouteInput.setAttribute("value",myObj[l].phrase);
-  document.getElementById("testew"+l).appendChild(elementAjouteInput);
-
-
-  var elementAjouteA = document.createElement("a");
-  elementAjouteA.setAttribute("class","btn btn-primary");
-  elementAjouteA.setAttribute("href","#");
-  elementAjouteA.setAttribute("role","button");
-  elementAjouteA.setAttribute("id","type1");
-  elementAjouteA.setAttribute("value",myObj[l].phrase);
-  elementAjouteA.innerHTML= myObj[l].phrase;
-  document.getElementById("testew"+l).appendChild(elementAjouteA);
-  }
-}
-  };
-  xhttp.open("GET", "fonction/phraseList.php?nb=0", true);
-  xhttp.send();
-
-</script>
-
-
-
+  <input class="form-check-input mt-3" type="radio" name="exampleRadios" id="exampleRadios1" value="<?=$question->getPhrase()?>">
+  <label class="form-check-label" for="exampleRadios1">
+  <a class="btn btn-primary" id="type1" href="#" role="button"><?= $question->getPhrase() ?></a>
+  </label>
+</div>
 <?php
-  //}
+  }
 
   ?>
 </div>
@@ -180,16 +122,6 @@ b=parseInt(a)+1;
 trouve=0;
   for(i=0;i< myObj.length;i++)
 {
-
-  if(String(myObj[i].phrase) == String($('#testew0 input:radio:checked').val()))
-{
-trouve =1;
-  alert("bonne réponse");
-  bp=parseInt(document.getElementById("compteur1").getAttribute("bp"))+1;
-  document.getElementById("compteur1").setAttribute("bp",bp);
-} 
-
-
   if(String(myObj[i].phrase) == String($('#avec input:radio:checked').val()))
 {
 trouve =1;
