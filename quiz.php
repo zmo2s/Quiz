@@ -79,8 +79,8 @@ foreach($arrayReponse as $question)
   {
     ?>
     <div class="form-check mt-5">
-   
-  <input class="form-check-input mt-3" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+  
+  <input class="form-check-input mt-3" type="radio" name="exampleRadios" id="exampleRadios1" value="<?=$question->getPhrase()?>">
   <label class="form-check-label" for="exampleRadios1">
   <a class="btn btn-primary" id="type1" href="#" role="button"><?= $question->getPhrase() ?></a>
   </label>
@@ -95,7 +95,25 @@ foreach($arrayReponse as $question)
 <div id="demo">
 <script>
 
+
+
 function loadDoc() {
+
+
+  a=document.getElementById("compteur").getAttribute("data");
+b=parseInt(a)+1;
+
+
+if(b ==5)
+{
+  alert("test reussie félicitations votre score est de "+document.getElementById("compteur1").getAttribute("bp")+" points");
+  $('#suiv').remove();
+        $('#ques').remove();
+        $('#ques1').remove();
+        $('#marche').remove();
+}
+else {
+
 
 // tableau reponse
   var xhttp = new XMLHttpRequest();
@@ -104,12 +122,23 @@ function loadDoc() {
   //   document.getElementById("demo").innerHTML = this.responseText;
   let myObj = JSON.parse(this.responseText);
   
+
+
+
+
   for(i=0;i< myObj.length;i++)
 {
-  if(myObj[i].phrase == $('#avec input:radio:checked').val())
+  if(String(myObj[i].phrase) == String($('#avec input:radio:checked').val()))
 {
   alert("bonne réponse");
-  bp=parseInt(document.getElementById("compteur1").getAttribute("bp")+1);
+  bp=parseInt(document.getElementById("compteur1").getAttribute("bp"))+1;
+  document.getElementById("compteur1").setAttribute("bp",bp);
+}
+
+if(String(myObj[i].phrase) == String($('#rad input:radio:checked').val()))
+{
+  alert("bonne réponse");
+  bp=parseInt(document.getElementById("compteur1").getAttribute("bp"))+1;
   document.getElementById("compteur1").setAttribute("bp",bp);
 }
      }   //  console.log(myObj);
@@ -275,14 +304,7 @@ max=parseInt(max)+1;
 
 //' 4 = max idéalement ok choisit quatre le max cool ok clear pour cette fonction
 
-if(b ==4)
-{
-  alert("test reussie félicitations votre score est de "+document.getElementById("compteur1").getAttribute("bp")+" points");
-  $('#suiv').remove();
-        $('#ques').remove();
-        $('#ques1').remove();
-        $('#marche').remove();
-}
+
 
 
 
@@ -314,7 +336,7 @@ loadDoc1();
 // incrémente a
 
 
-
+}
 
 
 }
