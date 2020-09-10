@@ -121,7 +121,7 @@ b=parseInt(a)+1;
      }
     }
   };
-  xhttp.open("GET", "rep.php", true);
+  xhttp.open("GET", "reponseTableau.php", true);
   xhttp.send();
 
 
@@ -184,7 +184,7 @@ if(b<=3)
     }
   };
   a=document.getElementById("compteur").getAttribute("data");
-  xhttp.open("GET", "reponse.php?nb="+a, true);
+  xhttp.open("GET", "questionList.php?nb="+a, true);
   xhttp.send();
 
 
@@ -262,7 +262,7 @@ if($rep104==b)
   };
   a=document.getElementById("compteur").getAttribute("data");
   
-  xhttp.open("GET", "test.php?nb="+a, true);
+  xhttp.open("GET", "phraseList.php?nb="+a, true);
   xhttp.send();
 
 
