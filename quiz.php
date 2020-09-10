@@ -37,7 +37,7 @@ $manager = new QuestionManager($bdd);
 <style>
 @media (min-width: 1200px ) { .container{ max-width: 500px; } } 
 </style>
-
+<a href="#" role="button" id="size"></a>
 <a class="btn btn-primary" href="#" role="button" id="ques">Question n°1</a>
 
 
@@ -53,7 +53,7 @@ var xhttp = new XMLHttpRequest();
       
       
       
-      document.getElementById("ques").setAttribute("taille",this.responseText);
+      document.getElementById("size").setAttribute("taille",this.responseText);
       //document.getElementById("ques").getAttribute("taille");
 
 
@@ -243,7 +243,7 @@ else if(String(myObj[i].phrase) == String($('#rad input:radio:checked').val()))
      }   //  console.log(myObj);
      a=document.getElementById("compteur").getAttribute("data");
 b=parseInt(a)+1;
-     if(trouve ==0 && b< 4)
+     if(trouve ==0 && b<= document.getElementById("size").getAttribute("taille"))
      {
        alert("mauvaise reponse");
      }
