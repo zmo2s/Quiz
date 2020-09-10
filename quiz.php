@@ -3,16 +3,14 @@
 require 'library/bootstrap.php';
 require 'library/mysql.php';
 require 'questionManager.php';
-$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//$reponse = $bdd->query('SELECT phrase FROM question where numero=1');
-   
-//echo $reponse;
-//$donne=$reponse->fetchAll();
-//echo $donne['phrase'];
-$db = new PDO('mysql:host=127.0.0.1;dbname=quiz', 'phpmyadmin', 'Password1011%');
 
+/*  BDD */
+
+
+$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$db = new PDO('mysql:host=127.0.0.1;dbname=quiz', 'phpmyadmin', 'Password1011%');
 $manager = new QuestionManager($bdd);
-$manager1 = new QuestionManager($db);
+
 
 ?>
 
@@ -36,27 +34,6 @@ $manager1 = new QuestionManager($db);
 
 <?php 
 $arrayReponse=$manager->listReponse(1);
-
-/*
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-  if (this.readyState == 4 && this.status == 200) {
-//   document.getElementById("demo").innerHTML = this.responseText;
-let myObj = JSON.parse(this.responseText);
-
-
-// if b!=4 a la fin on s'arrete
-elementAjoute78.innerHTML=myObj[0].phrase;
-
-//console.log(myObj.phrase);
-console.log(myObj[0].phrase);
-  }
-};
-a=document.getElementById("compteur").getAttribute("data");
-xhttp.open("GET", "reponse.php?nb="+a, true);
-xhttp.send();
-
-*/
 
 
 
@@ -111,17 +88,18 @@ b=parseInt(a)+1;
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-  //   document.getElementById("demo").innerHTML = this.responseText;
+
   let myObj = JSON.parse(this.responseText);
   
 
 
 
-
+trouve=0;
   for(i=0;i< myObj.length;i++)
 {
   if(String(myObj[i].phrase) == String($('#avec input:radio:checked').val()))
 {
+trouve =1;
   alert("bonne réponse");
   bp=parseInt(document.getElementById("compteur1").getAttribute("bp"))+1;
   document.getElementById("compteur1").setAttribute("bp",bp);
@@ -129,64 +107,32 @@ b=parseInt(a)+1;
 
 else if(String(myObj[i].phrase) == String($('#rad input:radio:checked').val()))
 {
+  trouve =1;
   alert("bonne réponse");
   bp=parseInt(document.getElementById("compteur1").getAttribute("bp"))+1;
   document.getElementById("compteur1").setAttribute("bp",bp);
 }
      }   //  console.log(myObj);
+     a=document.getElementById("compteur").getAttribute("data");
+b=parseInt(a)+1;
+     if(trouve ==0 && b<4)
+     {
+       alert("mauvaise reponse");
+     }
     }
   };
   xhttp.open("GET", "rep.php", true);
   xhttp.send();
 
 
-  // include totale des reponse $manager->rep();
-/*
-a =  document.getElementById("type1").val;
-console.log(a);
-*/
-
-
-//
-// bnop $('#avec input:radio:checked').val();
-/*
-if($('#avec input:radio:checked').val() in array)
-{
-if (a in array )
-{score+=1;
-} 
-*/
-
-/*
-if($('#avec input:radio:checked').val()=="salut")
-{
-  alert("bonne réponse");
-  bp=parseInt(document.getElementById("compteur1").getAttribute("bp")+1);
-  document.getElementById("compteur1").setAttribute("bp",bp);
-}
-*/
-//$manager = null;
-//$manager1 = new QuestionManager($bdd);
-
-
-/*
-if($('#avec input:radio:checked').val()=="salut")
-{
-  alert("bonne réponse");
-  bp=parseInt(document.getElementById("compteur1").getAttribute("bp")+1);
-  document.getElementById("compteur1").setAttribute("bp",bp);
-}
-
-*/
-
+ 
 
 
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       let myObj = JSON.parse(this.responseText);
-     // console.log(myObj);
-   // document.getElementById("demo").innerHTML = myObj[0].numero;
+
 
 
    $('#suppr').remove();
@@ -226,14 +172,14 @@ if(b<=3)
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-  //   document.getElementById("demo").innerHTML = this.responseText;
+
   let myObj = JSON.parse(this.responseText);
   
 
-  // if b!=4 a la fin on s'arrete
+  
   elementAjoute78.innerHTML=myObj[0].phrase;
 
-  //console.log(myObj.phrase);
+
   console.log(myObj[0].phrase);
     }
   };
@@ -246,17 +192,10 @@ if(b<=3)
 
 }
 else { document.getElementById("suiv").innerHTML="voir le score"; }
- // elementAjoute78.innerHTML="Quelle est .. ?";
-  //document.getElementById("avec").appendChild(elementAjoute78);
-/* --*/
+
 
 max=0;
 
-// $('#avec input:radio:checked').val();
-/*
-if a in array 
-score+=1; 
-*/
 
 
 
@@ -349,17 +288,15 @@ function loadDoc1() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       let myObj = JSON.parse(this.responseText);
-    //  console.log(myObj);
-    //  document.getElementById("demo").innerHTML = this.responseText;
+
       if(document.getElementById("compteur").getAttribute("data")==this.responseText+1)
       {
         $('#suiv').remove();
         $('#ques').remove();
         $('#ques').remove();
-        // $('#ques1').remove();
+
         $('#marche').remove();
-        //feliciation quizz terminer votre score
- // créer un bouton fin
+ 
       }
     }
   };
@@ -373,7 +310,7 @@ function loadDoc2() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-   //  document.getElementById("demo").innerHTML = this.responseText;
+
     }
   };
   xhttp.open("GET", "reponse.php", true);
@@ -382,23 +319,3 @@ function loadDoc2() {
 
 </script>
 
-<!--
-<div class="form-check mt-5">
-  <input class="form-check-input mt-3" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-  <label class="form-check-label" for="exampleRadios1">
-  <a class="btn btn-primary" href="#" role="button">Choix1</a>
-  </label>
-</div>
-<div class="form-check mt-3">
-  <input class="form-check-input mt-3" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-  <label class="form-check-label" for="exampleRadios2">
-  <a class="btn btn-primary" href="#" role="button">Choix2</a>
-  </label>
-</div>
-<div class="form-check mt-3">
-  <input class="form-check-input mt-3" type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
-  <label class="form-check-label" for="exampleRadios3">
-  <a class="btn btn-primary" href="#" role="button">Choix3</a>
-  </label>
-</div>
--->
