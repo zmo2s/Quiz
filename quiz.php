@@ -104,15 +104,7 @@ function loadDoc() {
 b=parseInt(a)+1;
 
 
-if(b ==5)
-{
-  alert("test reussie félicitations votre score est de "+document.getElementById("compteur1").getAttribute("bp")+" points");
-  $('#suiv').remove();
-        $('#ques').remove();
-        $('#ques1').remove();
-        $('#marche').remove();
-}
-else {
+
 
 
 // tableau reponse
@@ -135,7 +127,7 @@ else {
   document.getElementById("compteur1").setAttribute("bp",bp);
 }
 
-if(String(myObj[i].phrase) == String($('#rad input:radio:checked').val()))
+else if(String(myObj[i].phrase) == String($('#rad input:radio:checked').val()))
 {
   alert("bonne réponse");
   bp=parseInt(document.getElementById("compteur1").getAttribute("bp"))+1;
@@ -203,6 +195,8 @@ if($('#avec input:radio:checked').val()=="salut")
   $('#ques').remove();
   $('#ques1').remove();
 
+if(b<=3)
+{
 
   var elementAjoute = document.createElement("div");
 
@@ -226,7 +220,7 @@ if($('#avec input:radio:checked').val()=="salut")
   elementAjoute78.setAttribute("id","met1");
   elementAjoute78.setAttribute("role","button");
   
- 
+
 
 
   var xhttp = new XMLHttpRequest();
@@ -250,7 +244,8 @@ if($('#avec input:radio:checked').val()=="salut")
 
   document.getElementById("avec").appendChild(elementAjoute78);
 
-
+}
+else { document.getElementById("suiv").innerHTML="voir le score"; }
  // elementAjoute78.innerHTML="Quelle est .. ?";
   //document.getElementById("avec").appendChild(elementAjoute78);
 /* --*/
@@ -336,6 +331,13 @@ loadDoc1();
 // incrémente a
 
 
+if(b ==5)
+{
+  alert("test reussie félicitations votre score est de "+document.getElementById("compteur1").getAttribute("bp")+" points");
+  $('#suiv').remove();
+        $('#ques').remove();
+        $('#ques1').remove();
+        $('#marche').remove();
 }
 
 
