@@ -14,6 +14,13 @@ $manager = new QuestionManager($bdd);
 
 
 
+
+
+
+
+
+
+
 ?>
 
 <nav class="navbar navbar-light bg-primary">
@@ -33,6 +40,32 @@ $manager = new QuestionManager($bdd);
 
 <a class="btn btn-primary" href="#" role="button" id="ques">Question n°1</a>
 
+
+
+<script>
+
+var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+
+
+      taille = this.responseText;
+      
+      
+      
+      document.getElementById("ques").setAttribute("taille",this.responseText);
+      //document.getElementById("ques").getAttribute("taille");
+
+
+
+
+}
+  };
+  xhttp.open("GET", "teste1.php", true);
+  xhttp.send();
+
+
+</script>
 
 <?php 
 
@@ -210,11 +243,12 @@ else if(String(myObj[i].phrase) == String($('#rad input:radio:checked').val()))
      }   //  console.log(myObj);
      a=document.getElementById("compteur").getAttribute("data");
 b=parseInt(a)+1;
-     if(trouve ==0 && b<4)
+     if(trouve ==0 && b< 4)
      {
        alert("mauvaise reponse");
      }
     }
+    trouve =0;
   };
   xhttp.open("GET", "fonction/reponseTableau.php", true);
   xhttp.send();
@@ -374,16 +408,24 @@ var xhttp = new XMLHttpRequest();
   
 console.log(taille);
 
-
+moyenne =Math.ceil(taille/2);
 
 if(b ==5)
 {
- 
-  alert("test reussie félicitations votre score est de "+document.getElementById("compteur1").getAttribute("bp")+"/"+taille+" points");
+
+  if(moyenne < document.getElementById("compteur1").getAttribute("bp"))
+ {
+  alert("test reussie félicitations votre score est de "+document.getElementById("compteur1").getAttribute("bp")+"/"+taille+"la moyenne est de "+moyenne+" points");
   $('#suiv').remove();
         $('#ques').remove();
         $('#ques1').remove();
         $('#marche').remove();
+}
+else if ( moyenne <= document.getElementById("compteur1").getAttribute("bp") )
+{
+  alert("bien votre score est de "+document.getElementById("compteur1").getAttribute("bp")+"/"+taille);
+}
+else { alert("echec votre score est de "+document.getElementById("compteur1").getAttribute("bp")+"/"+taille);}
 }
 
 }
