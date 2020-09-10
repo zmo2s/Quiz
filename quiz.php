@@ -304,18 +304,5 @@ function loadDoc1() {
   xhttp.send();
 }
 
-
-
-function loadDoc2() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-
-    }
-  };
-  xhttp.open("GET", "reponse.php", true);
-  xhttp.send();
-}
-
 </script>
 

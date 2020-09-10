@@ -58,7 +58,7 @@ return $emp;
 
 
 
-    public function listeReponse()
+    public function tableauReponse()
     {
         $emp=[];
 
