@@ -74,12 +74,22 @@ foreach($arrayReponse as $question)
 
 function loadDoc() {
 
-
+// tableau reponse
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
   //   document.getElementById("demo").innerHTML = this.responseText;
+  let myObj = JSON.parse(this.responseText);
   
+  for(i=0;i< myObj.length;i++)
+{
+  if(myObj[i].phrase == $('#avec input:radio:checked').val())
+{
+  alert("bonne réponse");
+  bp=parseInt(document.getElementById("compteur1").getAttribute("bp")+1);
+  document.getElementById("compteur1").setAttribute("bp",bp);
+}
+     }     console.log(myObj);
     }
   };
   xhttp.open("GET", "rep.php", true);
@@ -102,12 +112,15 @@ if (a in array )
 {score+=1;
 } 
 */
+
+/*
 if($('#avec input:radio:checked').val()=="salut")
 {
   alert("bonne réponse");
   bp=parseInt(document.getElementById("compteur1").getAttribute("bp")+1);
   document.getElementById("compteur1").setAttribute("bp",bp);
 }
+*/
 //$manager = null;
 //$manager1 = new QuestionManager($bdd);
 
@@ -128,7 +141,7 @@ if($('#avec input:radio:checked').val()=="salut")
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       let myObj = JSON.parse(this.responseText);
-      console.log(myObj);
+     // console.log(myObj);
    // document.getElementById("demo").innerHTML = myObj[0].numero;
 
 
@@ -211,7 +224,7 @@ b=parseInt(a)+1;
 document.getElementById("compteur").setAttribute("data",b);
 //console.log(max);
 max=parseInt(max)+1;
-console.log(max);
+//console.log(max);
 
 //' 4 = max idéalement ok choisit quatre le max cool ok clear pour cette fonction
 
@@ -265,7 +278,7 @@ function loadDoc1() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       let myObj = JSON.parse(this.responseText);
-      console.log(myObj);
+    //  console.log(myObj);
     //  document.getElementById("demo").innerHTML = this.responseText;
       if(document.getElementById("compteur").getAttribute("data")==this.responseText+1)
       {
