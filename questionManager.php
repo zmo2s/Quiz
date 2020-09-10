@@ -64,7 +64,7 @@ return $emp;
 
     
 
-        $q=$this->db->query('SELECT * FROM reponse');
+        $q=$this->db->query('SELECT * FROM rep');
 
 
 

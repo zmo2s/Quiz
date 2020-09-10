@@ -49,7 +49,7 @@ foreach($arrayReponse as $question)
 }
   $array=$manager->listQuestion(1);
   
-  $manager->rep();
+ 
 
 ?><div id="compteur" data="1"><div id="marche"></div> <div id="champ"> <form id="rad"> <?php 
   foreach($array as $question)
@@ -73,6 +73,20 @@ foreach($arrayReponse as $question)
 <script>
 
 function loadDoc() {
+
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+  //   document.getElementById("demo").innerHTML = this.responseText;
+  
+    }
+  };
+  xhttp.open("GET", "rep.php", true);
+  xhttp.send();
+
+
+  // include totale des reponse $manager->rep();
 /*
 a =  document.getElementById("type1").val;
 console.log(a);
