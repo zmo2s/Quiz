@@ -108,7 +108,7 @@ $manager = new QuestionManager($bdd);
   ?><div id="compteur" data="1">
     <div id="marche"></div>
     <div id="champ">
-      <form id="rad"> <?php
+      <form id="rad" name="vol"> <?php
                       //foreach($array as $question)
                       //{
                       ?>
@@ -170,11 +170,11 @@ $manager = new QuestionManager($bdd);
           xhttp.open("GET", "fonction/phraseList.php?nb=0", true);
           xhttp.send();
         </script>
-
+</form>
 
     </div>
   </div>
-  <button type="button" id="suiv" class="btn btn-secondary mt-5" onclick="loadDoc()">Suivant</button>
+  <button type="button" id="suiv" class="btn btn-secondary mt-5" onclick="checkRadio()">Suivant</button>
   <div id="demo">
 
   <a class="btn btn-primary mt-3" role="button" id="quesScore">votre score est de 0/3 </a>
@@ -185,11 +185,11 @@ $manager = new QuestionManager($bdd);
 function checkRadio()
 {
 
-  if ($('input[name=coche]:checked').length == '0'){
+  
 
       
         loadDoc();
-      }
+  
 }
 
 
@@ -241,6 +241,8 @@ function checkRadio()
             b = parseInt(a) + 1;
             if (trouve == 0 && b <= document.getElementById("size").getAttribute("taille")) {
            //   alert("mauvaise reponse");
+                  
+
             }
           }
           trouve = 0;
