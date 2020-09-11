@@ -33,7 +33,7 @@ $manager = new QuestionManager($bdd);
     }
   </style>
   <a href="#" role="button" id="size"></a>
-  <a class="btn btn-primary"  role="button" id="ques">Question n°1</a>
+  <a class="btn btn-primary" href="#" role="button" id="ques">Question n°1</a>
 
 
 
@@ -74,7 +74,7 @@ $manager = new QuestionManager($bdd);
 
   ?>
 
-  <a class="btn btn-primary mt-3"  role="button" id="ques1">test</a>
+  <a class="btn btn-primary mt-3" href="#" role="button" id="ques1">test</a>
 
   <?php
   //}
@@ -157,7 +157,7 @@ $manager = new QuestionManager($bdd);
 
                 var elementAjouteA = document.createElement("a");
                 elementAjouteA.setAttribute("class", "btn btn-primary");
-               
+                elementAjouteA.setAttribute("href", "#");
                 elementAjouteA.setAttribute("role", "button");
                 elementAjouteA.setAttribute("id", "type1");
                 elementAjouteA.setAttribute("value", myObj[l].phrase);
@@ -263,7 +263,7 @@ $manager = new QuestionManager($bdd);
 
               var elementAjoute78 = document.createElement("a");
               elementAjoute78.setAttribute("class", "btn btn-primary ml-3");
-         
+              elementAjoute78.setAttribute("href", "#");
               elementAjoute78.setAttribute("id", "met1");
               elementAjoute78.setAttribute("role", "button");
 
@@ -316,7 +316,7 @@ $manager = new QuestionManager($bdd);
               document.getElementById("suppr" + i).appendChild(elementAjouteInput);
               var elementAjouteA = document.createElement("a");
               elementAjouteA.setAttribute("class", "btn btn-primary");
-            //  elementAjouteA.setAttribute("href", "#");
+              elementAjouteA.setAttribute("href", "#");
               elementAjouteA.setAttribute("role", "button");
               elementAjouteA.setAttribute("id", "type" + i);
               elementAjouteA.setAttribute("value", myObj[i].phrase);
@@ -385,19 +385,15 @@ $manager = new QuestionManager($bdd);
 
               if (moyenne < document.getElementById("compteur1").getAttribute("bp")) {
                 alert("test reussie félicitations votre score est de " + document.getElementById("compteur1").getAttribute("bp") + "/" + taille + "la moyenne est de " + moyenne + " points");
-            
+                $('#suiv').remove();
+                $('#ques').remove();
+                $('#ques1').remove();
+                $('#marche').remove();
               } else if (moyenne <= document.getElementById("compteur1").getAttribute("bp")) {
                 alert("bien votre score est de " + document.getElementById("compteur1").getAttribute("bp") + "/" + taille);
               } else {
                 alert("echec votre score est de " + document.getElementById("compteur1").getAttribute("bp") + "/" + taille);
               }
-           
-           
-              $('#suiv').remove();
-                $('#ques').remove();
-                $('#ques1').remove();
-                $('#marche').remove();
-           
             }
 
           }
