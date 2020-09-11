@@ -57,6 +57,25 @@ return $emp;
     }
 
 
+    public function listReponse($nb)
+    {
+            $emp=[];
+
+    
+
+        $q=$this->db->query('SELECT * FROM answer where numero='.$nb);
+
+
+
+            while ($donnes =$q->fetch(PDO::FETCH_ASSOC))
+             {
+                 $emp[]=new Question($donnes['numero'],$donnes['phrase']);
+             }
+
+return $emp;
+    }
+
+
 
     public function tableauReponse()
     {
