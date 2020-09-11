@@ -1,9 +1,10 @@
 <?php 
 
 require '../questionManager.php';
-$db = new PDO('mysql:host=127.0.0.1;dbname=quiz', 'phpmyadmin', 'Password1011%');
+require '../library/mysql.php';
+//$db = new PDO('mysql:host=127.0.0.1;dbname=quiz', 'phpmyadmin', 'Password1011%');
 
-$manager = new QuestionManager($db);
+$manager = new QuestionManager($bdd);
 
 $array=$manager->tableauReponse();
 
