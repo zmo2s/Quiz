@@ -16,7 +16,7 @@ $manager = new QuestionManager($bdd);
 
 <nav class="navbar navbar-light bg-primary">
   <a class="navbar-brand" href="#">
-    <img src="public/brain.jpeg" width="30" height="30" alt="" loading="lazy"> Quiz
+    <img src="public/brain.png" width="30" height="30" alt="" loading="lazy"> Quiz
   </a>
 </nav>
 
@@ -32,7 +32,7 @@ $manager = new QuestionManager($bdd);
       }
     }
   </style>
-  <a href="#" role="button" id="size"></a>
+  <a  role="button" id="size"></a>
   <a class="btn btn-primary"  role="button" id="ques">Question n°1</a>
 
 
@@ -50,7 +50,7 @@ $manager = new QuestionManager($bdd);
         document.getElementById("size").setAttribute("taille", this.responseText);
         //document.getElementById("ques").getAttribute("taille");
 
-
+     //   document.getElementById("quesScore").innerHTML="le score est de "+document.getElementById("compteur1").getAttribute("bp")+"/"+document.getElementById("size").getAttribute("taille");
 
 
       }
@@ -74,8 +74,7 @@ $manager = new QuestionManager($bdd);
 
   ?>
 
-  <a class="btn btn-primary mt-3"  role="button" id="ques1">test</a>
-  
+  <a class="btn btn-primary mt-3" role="button" id="ques1">test</a>
 
   <?php
   //}
@@ -130,7 +129,7 @@ $manager = new QuestionManager($bdd);
           xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
               let myObj = JSON.parse(this.responseText);
-         
+           //   document.getElementById("ques1").innerHTML = myObj[0].phrase;
               // console.log(myObj[0].phrase);
 
               for (l = 0; l < myObj.length; l++) {
@@ -158,7 +157,7 @@ $manager = new QuestionManager($bdd);
 
                 var elementAjouteA = document.createElement("a");
                 elementAjouteA.setAttribute("class", "btn btn-primary");
-               
+              
                 elementAjouteA.setAttribute("role", "button");
                 elementAjouteA.setAttribute("id", "type1");
                 elementAjouteA.setAttribute("value", myObj[l].phrase);
@@ -176,15 +175,24 @@ $manager = new QuestionManager($bdd);
   </div>
   <button type="button" id="suiv" class="btn btn-secondary mt-5" onclick="loadDoc()">Suivant</button>
   <div id="demo">
+
+  <a class="btn btn-primary mt-3" role="button" id="quesScore">votre score est de 0/3 </a>
     <script>
+
+//document.getElementById("quesScore").innerHTML="le score est de "+document.getElementById("size").getAttribute("taille");
+
+
       function loadDoc() {
+
+        document.getElementById("quesScore").innerHTML="le score est de "+document.getElementById("compteur1").getAttribute("bp")+"/"+document.getElementById("size").getAttribute("taille");
+
 
 
          a = document.getElementById("compteur").getAttribute("data");
          b = parseInt(a) + 1;
 
         // tableau reponse
-      xhttp = new XMLHttpRequest();
+         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
 
@@ -254,7 +262,7 @@ $manager = new QuestionManager($bdd);
 
               var elementAjoute5 = document.createElement("a");
               elementAjoute5.setAttribute("class", "btn btn-primary");
-        //      elementAjoute5.setAttribute("href", "#");
+             
               elementAjoute5.setAttribute("id", "met");
               elementAjoute5.setAttribute("role", "button");
               a = parseInt(document.getElementById("compteur").getAttribute("data")) + 1;
@@ -317,7 +325,7 @@ $manager = new QuestionManager($bdd);
               document.getElementById("suppr" + i).appendChild(elementAjouteInput);
               var elementAjouteA = document.createElement("a");
               elementAjouteA.setAttribute("class", "btn btn-primary");
-            //  elementAjouteA.setAttribute("href", "#");
+         
               elementAjouteA.setAttribute("role", "button");
               elementAjouteA.setAttribute("id", "type" + i);
               elementAjouteA.setAttribute("value", myObj[i].phrase);
@@ -386,19 +394,15 @@ $manager = new QuestionManager($bdd);
 
               if (moyenne < document.getElementById("compteur1").getAttribute("bp")) {
                 alert("test reussie félicitations votre score est de " + document.getElementById("compteur1").getAttribute("bp") + "/" + taille + "la moyenne est de " + moyenne + " points");
-            
+                $('#suiv').remove();
+                $('#ques').remove();
+                $('#ques1').remove();
+                $('#marche').remove();
               } else if (moyenne <= document.getElementById("compteur1").getAttribute("bp")) {
                 alert("bien votre score est de " + document.getElementById("compteur1").getAttribute("bp") + "/" + taille);
               } else {
                 alert("echec votre score est de " + document.getElementById("compteur1").getAttribute("bp") + "/" + taille);
               }
-           
-           
-              $('#suiv').remove();
-                $('#ques').remove();
-                $('#ques1').remove();
-                $('#marche').remove();
-           
             }
 
           }
@@ -414,18 +418,21 @@ $manager = new QuestionManager($bdd);
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
             let myObj = JSON.parse(this.responseText);
+         //   document.getElementById("quesScore").innerHTML="le score est de "+document.getElementById("compteur1").getAttribute("bp")+"/"+document.getElementById("size").getAttribute("taille");
 
             if (document.getElementById("compteur").getAttribute("data") == this.responseText + 1) {
               $('#suiv').remove();
               $('#ques').remove();
               $('#ques').remove();
 
-              $('#marche').remove();
+        //      $('#marche').remove();
 
             }
           }
         };
         xhttp.open("GET", "teste1.php", true);
         xhttp.send();
+
+       
       }
     </script>
