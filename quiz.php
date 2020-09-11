@@ -159,6 +159,7 @@ $manager = new QuestionManager($bdd);
                 elementAjouteA.setAttribute("class", "btn btn-primary");
               
                 elementAjouteA.setAttribute("role", "button");
+                elementAjouteA.setAttribute("name", "coche");
                 elementAjouteA.setAttribute("id", "type1");
                 elementAjouteA.setAttribute("value", myObj[l].phrase);
                 elementAjouteA.innerHTML = myObj[l].phrase;
@@ -184,9 +185,9 @@ $manager = new QuestionManager($bdd);
 function checkRadio()
 {
 
-  if(String($('#champ input:radio:checked').val())!=NULL)
+  if ($('input[name=coche]:checked').length == '0'){
 
-      {
+      
         loadDoc();
       }
 }
