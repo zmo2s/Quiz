@@ -75,6 +75,7 @@ $manager = new QuestionManager($bdd);
   ?>
 
   <a class="btn btn-primary mt-3"  role="button" id="ques1">test</a>
+  
 
   <?php
   //}
@@ -129,7 +130,7 @@ $manager = new QuestionManager($bdd);
           xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
               let myObj = JSON.parse(this.responseText);
-              document.getElementById("ques1").innerHTML = myObj[0].phrase;
+         
               // console.log(myObj[0].phrase);
 
               for (l = 0; l < myObj.length; l++) {
@@ -262,7 +263,7 @@ $manager = new QuestionManager($bdd);
 
 
               var elementAjoute78 = document.createElement("a");
-              elementAjoute78.setAttribute("class", "btn btn-primary ml-3");
+              elementAjoute78.setAttribute("class", "btn btn-primary mt-3");
          
               elementAjoute78.setAttribute("id", "met1");
               elementAjoute78.setAttribute("role", "button");
