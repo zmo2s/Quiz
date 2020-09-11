@@ -181,6 +181,16 @@ $manager = new QuestionManager($bdd);
 
 //document.getElementById("quesScore").innerHTML="le score est de "+document.getElementById("size").getAttribute("taille");
 
+function checkRadio()
+{
+
+  if(String($('#champ input:radio:checked').val())!=NULL)
+
+      {
+        loadDoc();
+      }
+}
+
 
       function loadDoc() {
 
@@ -206,7 +216,7 @@ $manager = new QuestionManager($bdd);
 
               if (String(myObj[i].phrase) == String($('#testew0 input:radio:checked').val())) {
                 trouve = 1;
-                alert("bonne réponse");
+             //   alert("bonne réponse");
                 bp = parseInt(document.getElementById("compteur1").getAttribute("bp")) + 1;
                 document.getElementById("compteur1").setAttribute("bp", bp);
               }
@@ -214,20 +224,22 @@ $manager = new QuestionManager($bdd);
 
               if (String(myObj[i].phrase) == String($('#avec input:radio:checked').val())) {
                 trouve = 1;
-                alert("bonne réponse");
+           //   alert("bonne réponse");
                 bp = parseInt(document.getElementById("compteur1").getAttribute("bp")) + 1;
                 document.getElementById("compteur1").setAttribute("bp", bp);
-              } else if (String(myObj[i].phrase) == String($('#rad input:radio:checked').val())) {
+                document.getElementById("quesScore").innerHTML="le score est de "+document.getElementById("compteur1").getAttribute("bp")+"/"+document.getElementById("size").getAttribute("taille");
+              } if (String(myObj[i].phrase) == String($('#rad input:radio:checked').val())) {
                 trouve = 1;
-                alert("bonne réponse");
+            //  alert("bonne réponse");
                 bp = parseInt(document.getElementById("compteur1").getAttribute("bp")) + 1;
                 document.getElementById("compteur1").setAttribute("bp", bp);
+                document.getElementById("quesScore").innerHTML="le score est de "+document.getElementById("compteur1").getAttribute("bp")+"/"+document.getElementById("size").getAttribute("taille");
               }
             } //  console.log(myObj);
             a = document.getElementById("compteur").getAttribute("data");
             b = parseInt(a) + 1;
             if (trouve == 0 && b <= document.getElementById("size").getAttribute("taille")) {
-              alert("mauvaise reponse");
+           //   alert("mauvaise reponse");
             }
           }
           trouve = 0;
@@ -302,6 +314,7 @@ $manager = new QuestionManager($bdd);
 
             } else {
               document.getElementById("suiv").innerHTML = "voir le score";
+              $('#suiv').remove();
             }
 
 
