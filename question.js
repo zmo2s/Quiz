@@ -1,6 +1,3 @@
 module.export{
     
 }
-
-
-hi tan
