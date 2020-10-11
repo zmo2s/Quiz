@@ -174,7 +174,14 @@ $manager = new QuestionManager($bdd);
 
     </div>
   </div>
+
+
   <button type="button" id="suiv" class="btn btn-secondary mt-5" onclick="checkRadio()">Suivant</button>
+
+
+  <p id="reponse1" ></p>
+
+
   <div id="demo">
 
   <a class="btn btn-primary mt-3" role="button" id="quesScore">votre score est de 0/3 </a>
@@ -243,16 +250,17 @@ function checkRadio()
            //   alert("mauvaise reponse");
                   
                   
-                    var xhttp = new XMLHttpRequest();
+      /*              var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       let myObj = JSON.parse(this.responseText);
-      
+     document.getElementById("reponse").innerHTML="salut";
+
     }
   };
   xhttp.open("GET", "reponseList.php", true);
   xhttp.send();
-                  
+              */    
                   
                 
 
